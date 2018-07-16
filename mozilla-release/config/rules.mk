@@ -1215,10 +1215,10 @@ endif
 CLIQZ_EXT_URL = "http://repository.cliqz.com/dist/$(CQZ_RELEASE_CHANNEL)/$(CQZ_VERSION)/$(MOZ_BUILD_DATE)/cliqz@cliqz.com.xpi"
 HTTPSE_EXT_URL = "http://repository.cliqz.com/dist/$(CQZ_RELEASE_CHANNEL)/$(CQZ_VERSION)/$(MOZ_BUILD_DATE)/https-everywhere@cliqz.com.xpi"
 CLIQZ_ULTRAPRIVATEMODE_EXT_URL = "https://cdn.cliqz.com/browser-f/fun-demo/ultraprivatemode.cliqz.com.xpi"
-TOR_WIN_URL = "https://cdn.cliqz.com/browser-f/fun-demo/tor_windows32_7.5.5.tar"
-TOR_LINUX64_URL = "https://cdn.cliqz.com/browser-f/fun-demo/tor_linux64_7.5.5.tar"
-TOR_LINUX32_URL = "https://cdn.cliqz.com/browser-f/fun-demo/tor_linux32_7.5.5.tar"
-TOR_MAC_URL = "https://cdn.cliqz.com/browser-f/fun-demo/tor_mac64_7.5.5.tar"
+TOR_WIN_URL = "https://cdn.cliqz.com/browser-f/fun-demo/tor_windows32_7.5.6.tar.xz"
+TOR_LINUX64_URL = "https://cdn.cliqz.com/browser-f/fun-demo/tor_linux64_7.5.6.tar.xz"
+TOR_LINUX32_URL = "https://cdn.cliqz.com/browser-f/fun-demo/tor_linux32_7.5.6.tar.xz"
+TOR_MAC_URL = "https://cdn.cliqz.com/browser-f/fun-demo/tor_mac64_7.5.6.tar.xz"
 
 DIST_RESPATH = $(DIST)/bin
 EXTENSIONS_PATH = $(DIST_RESPATH)/browser/features
@@ -1250,22 +1250,22 @@ $(CLIQZ_CFG):
 
 tor:
 ifeq ($(OS_TARGET),WINNT)
-	wget --output-document $(DIST_RESPATH)/tor.tar $(TOR_WIN_URL)
+	wget --output-document $(DIST_RESPATH)/tor.tar.xz $(TOR_WIN_URL)
 else
 ifeq ($(OS_TARGET),Linux)
 ifdef _AMD64_
-	wget --output-document $(DIST_RESPATH)/tor.tar $(TOR_LINUX64_URL)
+	wget --output-document $(DIST_RESPATH)/tor.tar.xz $(TOR_LINUX64_URL)
 endif
 ifndef _AMD64_
-	wget --output-document $(DIST_RESPATH)/tor.tar $(TOR_LINUX32_URL)
+	wget --output-document $(DIST_RESPATH)/tor.tar.xz $(TOR_LINUX32_URL)
 endif
 else
 ifeq ($(OS_TARGET),Darwin)
-	wget --output-document $(DIST_RESPATH)/tor.tar $(TOR_MAC_URL)
+	wget --output-document $(DIST_RESPATH)/tor.tar.xz $(TOR_MAC_URL)
 endif
 endif
 endif
-	tar -xf $(DIST_RESPATH)/tor.tar --directory $(DIST_RESPATH)
+	tar -xf $(DIST_RESPATH)/tor.tar.xz --directory $(DIST_RESPATH)
 
 # Package Cliqz stuff
 cliqz_distr: $(CLIQZ_XPI_PATH) $(HTTPSE_XPI_PATH) $(CLIQZ_ULTRAPRIVATEMODE_XPI_PATH) $(CLIQZ_CFG) tor
