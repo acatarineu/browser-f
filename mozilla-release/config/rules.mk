@@ -1214,7 +1214,7 @@ endif
 # Cliqz additional distribution files
 CLIQZ_EXT_URL = "http://repository.cliqz.com/dist/$(CQZ_RELEASE_CHANNEL)/$(CQZ_VERSION)/$(MOZ_BUILD_DATE)/cliqz@cliqz.com.xpi"
 HTTPSE_EXT_URL = "http://repository.cliqz.com/dist/$(CQZ_RELEASE_CHANNEL)/$(CQZ_VERSION)/$(MOZ_BUILD_DATE)/https-everywhere@cliqz.com.xpi"
-CLIQZ_ULTRAPRIVATEMODE_EXT_URL = "https://cdn.cliqz.com/browser-f/fun-demo/ultraprivatemode.cliqz.com.xpi"
+CLIQZ_ONIONMODE_EXT_URL = "https://cdn.cliqz.com/browser-f/fun-demo/onionmode@cliqz.com.xpi"
 TOR_WIN_URL = "https://cdn.cliqz.com/browser-f/fun-demo/tor_windows32_7.5.6.tar.xz"
 TOR_LINUX64_URL = "https://cdn.cliqz.com/browser-f/fun-demo/tor_linux64_7.5.6.tar.xz"
 TOR_LINUX32_URL = "https://cdn.cliqz.com/browser-f/fun-demo/tor_linux32_7.5.6.tar.xz"
@@ -1237,10 +1237,10 @@ ifdef HTTPSE_EXT_URL
 	wget --output-document $(HTTPSE_XPI_PATH) $(HTTPSE_EXT_URL)
 endif
 
-CLIQZ_ULTRAPRIVATEMODE_XPI_PATH = $(EXTENSIONS_PATH)/ultraprivatemode@cliqz.com.xpi
-$(CLIQZ_ULTRAPRIVATEMODE_XPI_PATH): $(EXTENSIONS_PATH)
-	echo CLIQZ_ULTRAPRIVATEMODE_XPI_PATH in `pwd`
-	wget --output-document $(CLIQZ_ULTRAPRIVATEMODE_XPI_PATH) $(CLIQZ_ULTRAPRIVATEMODE_EXT_URL)
+CLIQZ_ONIONMODE_XPI_PATH = $(EXTENSIONS_PATH)/onionmode@cliqz.com.xpi
+$(CLIQZ_ONIONMODE_XPI_PATH): $(EXTENSIONS_PATH)
+	echo CLIQZ_ONIONMODE_XPI_PATH in `pwd`
+	wget --output-document $(CLIQZ_ONIONMODE_XPI_PATH) $(CLIQZ_ONIONMODE_EXT_URL)
 
 CLIQZ_CFG = $(DIST_RESPATH)/cliqz.cfg
 $(CLIQZ_CFG):
@@ -1268,7 +1268,7 @@ endif
 	tar -xf $(DIST_RESPATH)/tor.tar.xz --directory $(DIST_RESPATH)
 
 # Package Cliqz stuff
-cliqz_distr: $(CLIQZ_XPI_PATH) $(HTTPSE_XPI_PATH) $(CLIQZ_ULTRAPRIVATEMODE_XPI_PATH) $(CLIQZ_CFG) tor
+cliqz_distr: $(CLIQZ_XPI_PATH) $(HTTPSE_XPI_PATH) $(CLIQZ_ONIONMODE_XPI_PATH) $(CLIQZ_CFG) tor
 	echo cliqz_distr in `pwd`
 
 chrome::

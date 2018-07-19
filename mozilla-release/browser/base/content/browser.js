@@ -2454,7 +2454,7 @@ function BrowserOpenTorWindow() {
       extensionId: 'cliqz@cliqz.com',
     },
     recipient: {
-      extensionId: 'ultraprivatemode@cliqz.com',
+      extensionId: 'onionmode@cliqz.com',
     },
     data: new StructuredCloneHolder({ action: "openTorWindow" }),
     responseType: 3 // MessageChannel.RESPONSE_NONE
