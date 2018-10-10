@@ -10,7 +10,7 @@ ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
 ChromeUtils.import("resource://gre/modules/Services.jsm");
 ChromeUtils.import("resource://gre/modules/AppConstants.jsm");
 ChromeUtils.import("resource://gre/modules/NotificationDB.jsm");
-#if CQZ_TOR_MODE
+#ifdef CQZ_TOR_MODE
 ChromeUtils.import("resource://gre/modules/ExtensionUtils.jsm");
 #endif
 const {WebExtensionPolicy} = Cu.getGlobalForObject(Services);
@@ -2469,7 +2469,7 @@ function BrowserOpenPrivateTab() {
 }
 #endif
 
-#if CQZ_TOR_MODE
+#ifdef CQZ_TOR_MODE
 function BrowserOpenTorWindow() {
   Services.mm.broadcastAsyncMessage('MessageChannel:Messages', [{
     messageName: 'Extension:Message',
